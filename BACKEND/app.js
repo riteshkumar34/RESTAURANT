@@ -8,11 +8,18 @@ import reservationRouter from "./routes/reservationRoute.js";
 const app = express();
 dotenv.config();
 
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://restaurant-omega-lemon.vercel.app"
+];
+
 app.use(cors({
-    origin: "http://localhost:5173",
-    methods: ["POST"],
-    credentials: true
-  }));
+  origin: allowedOrigins,
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  credentials: true,
+}));
+
+
   
 
 app.use(express.json());
